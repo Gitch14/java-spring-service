@@ -32,4 +32,12 @@ public class User {
     )
     private Set<Manga> mangaReadSoon;
 
+    @ManyToMany
+    @JoinTable(
+            name = "user_manga_read_finished",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "manga_id")
+    )
+    private Set<Manga> mangaReadFinished;
+
 }
