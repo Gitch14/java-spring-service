@@ -2,8 +2,7 @@ package com.example.mangatranslator.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -13,16 +12,24 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "email")
     private String email;
-
-    @Column(name = "password")
+    private String name;
     private String password;
 
-    @ManyToOne
-    @JoinColumn(name = "default_language_id")
-    private Language defaultLanguage;
+    @ManyToMany
+    @JoinTable(
+            name = "user_manga_read_now",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "manga_id")
+    )
+    private Set<Manga> mangaReadNow;
 
-    @OneToMany(mappedBy = "user")
-    private List<Favorite> favorites;
+    @ManyToMany
+    @JoinTable(
+            name = "user_manga_read_soon",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "manga_id")
+    )
+    private Set<Manga> mangaReadSoon;
+
 }

@@ -3,7 +3,9 @@ package com.example.mangatranslator.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "manga")
@@ -13,16 +15,30 @@ public class Manga {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "title")
-    private String title;
+    private String name;
 
-    @Column(name = "original_images_path")
-    private String originalImagesPath;
+    private int rate;
 
-    @ManyToOne
-    @JoinColumn(name = "list_language_id")
-    private Language listLanguage;
+    private String description;
+
+    private String author;
+
+    private String artAuthor;
+
+    @OneToMany(mappedBy = "manga")
+    private List<Tag> tags;
 
     @OneToMany(mappedBy = "manga")
     private List<Episode> episodes;
+
+    private LocalDate dateOfPublish;
+
+    private String mangaStatus;
+
+    private String type;
+
+    @ManyToMany(mappedBy = "mangas")
+    private Set<Genre> genres;
+
+    private String mainImage;
 }

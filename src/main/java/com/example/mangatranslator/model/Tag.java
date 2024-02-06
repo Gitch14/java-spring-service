@@ -4,18 +4,13 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "favorite")
 @Data
-public class Favorite {
+@Table(name = "tag")
+public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "manga_id")
-    private Manga manga;
 }
