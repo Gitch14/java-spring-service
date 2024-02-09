@@ -18,26 +18,10 @@ public class User {
 
     @ManyToMany
     @JoinTable(
-            name = "user_manga_read_now",
+            name = "favorite",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "manga_id")
     )
-    private Set<Manga> mangaReadNow;
-
-    @ManyToMany
-    @JoinTable(
-            name = "user_manga_read_soon",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "manga_id")
-    )
-    private Set<Manga> mangaReadSoon;
-
-    @ManyToMany
-    @JoinTable(
-            name = "user_manga_read_finished",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "manga_id")
-    )
-    private Set<Manga> mangaReadFinished;
+    private Set<Recipe> favoriteRecipes;
 
 }

@@ -1,9 +1,9 @@
 package com.example.mangatranslator.repository;
 
-import com.example.mangatranslator.model.Language;
+import com.example.mangatranslator.model.Recipe;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface LanguageRepository extends JpaRepository<Language, Long> {
+public interface RecipeRepository extends JpaRepository<Recipe, Long> {
 }

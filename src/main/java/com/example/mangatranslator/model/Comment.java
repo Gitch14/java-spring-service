@@ -17,7 +17,17 @@ public class Comment {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @ManyToOne
+    @JoinColumn(name = "recipe_id", nullable = false)
+    private Recipe recipe;
+
     private String text;
+
+    private int likes;
+
+    private int dislikes;
+
+    private int reports;
 
     private LocalDate datePublished;
 
