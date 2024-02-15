@@ -2,12 +2,7 @@ package com.example.mangatranslator.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Data
@@ -22,7 +17,11 @@ public class Recipe {
     private String imagePath;
     private String videoPath;
     private String optional;
-    private LocalDateTime datePublish;
+    private Date datePublish;
+    private String timeToCookAndPreparing;
+    private String timeToCook;
+    private String timeToPreparing;
+
 
     @ManyToOne
     private Difficulty difficulty;

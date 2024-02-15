@@ -3,6 +3,9 @@ package com.example.mangatranslator.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import static com.example.mangatranslator.util.Const.*;
+
+
 @Service
 public class MyService {
 
@@ -13,8 +16,15 @@ public class MyService {
         this.messageSender = messageSender;
     }
 
-    public void someMethod() {
-        // send message in queue with name myQueue
-        messageSender.sendMessage("myQueue", "Hello, RabbitMQ!");
+    public void someMethodForNew() {
+        messageSender.sendMessage(CREATE_RECIPE_SENDER, "Hello, RabbitMQ!(new)");
+    }
+
+    public void someMethodForUpdate() {
+        messageSender.sendMessage(UPDATE_RECIPE_SENDER, "Hello, RabbitMQ!(update)");
+    }
+
+    public void someMethodForDelete() {
+        messageSender.sendMessage(DELETE_RECIPE_SENDER, "Hello, RabbitMQ!(delete)");
     }
 }
