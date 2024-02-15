@@ -17,4 +17,5 @@ public class MessageSenderService {
         rabbitTemplate.convertAndSend(queueName, message);
         System.out.println("Message sent to queue '" + queueName + "': " + message);
     }
-}
+}//sendDataRecipe
+//verificationSuccess
