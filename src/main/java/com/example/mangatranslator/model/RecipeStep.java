@@ -17,6 +17,6 @@ public class RecipeStep {
 
     private int stepNumber;
     private String stepName;
-    private String image;
+    private String imagePath;
     private String text;
 }
