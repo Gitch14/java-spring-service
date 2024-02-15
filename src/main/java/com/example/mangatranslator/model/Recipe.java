@@ -3,6 +3,7 @@ package com.example.mangatranslator.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -21,6 +22,7 @@ public class Recipe {
     private String imagePath;
     private String videoPath;
     private String optional;
+    private LocalDateTime datePublish;
 
     @ManyToOne
     private Difficulty difficulty;
@@ -41,6 +43,7 @@ public class Recipe {
     private int dislikes;
     private int reports;
     private double rating;
+
     private int calories;
     private int proteins;
     private int carbohydrates;
