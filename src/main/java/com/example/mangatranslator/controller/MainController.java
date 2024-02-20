@@ -13,7 +13,7 @@ public class MainController {
 
     @GetMapping("/")
     public String mainPage() {
-        myService.someMethodForNew();
+      //  myService.someMethodForNew();
         return "index";
     }
 

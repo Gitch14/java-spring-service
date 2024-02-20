@@ -16,7 +16,7 @@ public class MyService {
         this.messageSender = messageSender;
     }
 
-    public void someMethodForNew() {
+    /*public void someMethodForNew() {
         messageSender.sendMessage(CREATE_RECIPE_SENDER, "Hello, RabbitMQ!(new)");
     }
 
@@ -27,4 +27,6 @@ public class MyService {
     public void someMethodForDelete() {
         messageSender.sendMessage(DELETE_RECIPE_SENDER, "Hello, RabbitMQ!(delete)");
     }
+
+     */
 }
