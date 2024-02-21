@@ -2,7 +2,7 @@ package com.example.mangatranslator.controller;
 
 import com.example.mangatranslator.model.User1;
 import com.example.mangatranslator.repository.User1Repository;
-import com.example.mangatranslator.service.MyService;
+import com.example.mangatranslator.service.RabbitMQSenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,15 +14,14 @@ import java.util.List;
 public class MainController {
 
     @Autowired
-    private MyService myService;
+    private RabbitMQSenderService rabbitMQSenderService;
     @Autowired
     private User1Repository repository;
 
     @GetMapping("/")
     public List<User1> mainPage() {
-        List<User1> list = new ArrayList<>();
-        list = repository.findAll();
-      //  myService.someMethodForNew();
+        List<User1> list = repository.findAll();
+      rabbitMQSenderService.sendCreateMessage(list.toString());
         return list;
     }
 
