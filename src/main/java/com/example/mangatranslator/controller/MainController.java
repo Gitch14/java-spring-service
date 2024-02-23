@@ -21,7 +21,9 @@ public class MainController {
     @GetMapping("/")
     public List<User1> mainPage() {
         List<User1> list = repository.findAll();
-      rabbitMQSenderService.sendCreateMessage(list.toString());
+        rabbitMQSenderService.sendCreateMessage("create");
+        rabbitMQSenderService.sendUpdateMessage("update");
+        rabbitMQSenderService.sendRemoveMessage("remove");
         return list;
     }
 

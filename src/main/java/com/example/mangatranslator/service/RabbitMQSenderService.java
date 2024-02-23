@@ -42,12 +42,22 @@ public class RabbitMQSenderService {
     }
 
     public void sendUpdateMessage(String message) {
-        rabbitTemplate.convertAndSend(updateExchange,routingKey_update,"hello world! update");
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("message", message);
+
+        // Convert JSON object to string
+        String jsonMessage = jsonObject.toString();
+        rabbitTemplate.convertAndSend(updateExchange,routingKey_update,jsonMessage);
         log.info(" [x] Sent to create queue: '" + message + "'");
     }
 
     public void sendRemoveMessage(String message) {
-        rabbitTemplate.convertAndSend(removeExchange,routingKey_remove,"hello world! remove");
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("message", message);
+
+        // Convert JSON object to string
+        String jsonMessage = jsonObject.toString();
+        rabbitTemplate.convertAndSend(removeExchange,routingKey_remove,jsonMessage);
         log.info(" [x] Sent to create queue: '" + message + "'");
     }
 
