@@ -19,12 +19,12 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.io.Serializable;
 
-@Configuration
-@AutoConfigureAfter(RedisAutoConfiguration.class)
-@EnableCaching
+//@Configuration
+//@AutoConfigureAfter(RedisAutoConfiguration.class)
+//@EnableCaching
 public class RedisConfig {
 
-    @Autowired
+   // @Autowired
     private CacheManager cacheManager;
 
     @Value("${spring.redis.host}")

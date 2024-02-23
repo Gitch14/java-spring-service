@@ -9,8 +9,8 @@ import static com.example.mangatranslator.util.Const.*;
 @Slf4j
 @Component
 public class MessageReceiver {
-
-    @RabbitListener(queues = CREATE_RECIPE_SENDER)
+/*
+    @RabbitListener(queues = "recipe_service_create")
         public void processCreateMessage(String message) {
         log.info("Received create message: " + message);
     }
@@ -24,5 +24,7 @@ public class MessageReceiver {
     public void processRemoveMessage(String message) {
         log.info("Received remove message: " + message);
     }
+
+ */
 }
 
