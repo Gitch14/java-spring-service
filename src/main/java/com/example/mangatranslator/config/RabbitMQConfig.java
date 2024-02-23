@@ -9,43 +9,81 @@ import static com.example.mangatranslator.util.Const.*;
 
 @Configuration
 public class RabbitMQConfig {
+    //Create
     @Value("${queue.create-recipe}")
     private String createQueue;
-    @Value("${queue.update-recipe}")
-    private String updateQueue;
-    @Value("${queue.remove-recipe}")
-    private String removeQueue;
-
     @Value("${exchange.create-recipe}")
     private String createExchange;
     @Value("${routing-key.create-recipe}")
     private String routingKey_create;
 
+    //Update
+    @Value("${queue.update-recipe}")
+    private String updateQueue;
+    @Value("${exchange.update-recipe}")
+    private String updateExchange;
+    @Value("${routing-key.update-recipe}")
+    private String routingKey_update;
+
+    //Delete
+    @Value("${queue.remove-recipe}")
+    private String removeQueue;
+    @Value("${exchange.remove-recipe}")
+    private String removeExchange;
+    @Value("${routing-key.remove-recipe}")
+    private String routingKey_remove;
+
     @Bean
     public Queue createQueue() {
-        return new Queue(createQueue, true);
+        return new Queue(createQueue, false);
     }
 
     @Bean
     public Queue updateQueue() {
-        return new Queue(updateQueue, true);
+        return new Queue(updateQueue, false);
     }
 
     @Bean
     public Queue removeQueue() {
-        return new Queue(removeQueue, true);
+        return new Queue(removeQueue, false);
     }
 
     @Bean
-    public TopicExchange exchange(){
+    public TopicExchange exchangeCreate(){
         return new TopicExchange(createExchange);
     }
 
     @Bean
-    public Binding binding(){
+    public TopicExchange exchangeUpdate(){
+        return new TopicExchange(updateExchange);
+    }
+
+    @Bean
+    public TopicExchange exchangeDelete(){
+        return new TopicExchange(removeExchange);
+    }
+
+    @Bean
+    public Binding bindingCreate(){
         return BindingBuilder
                 .bind(createQueue())
-                .to(exchange())
+                .to(exchangeCreate())
                 .with(routingKey_create);
+    }
+
+    @Bean
+    public Binding bindingUpdate(){
+        return BindingBuilder
+                .bind(updateQueue())
+                .to(exchangeUpdate())
+                .with(routingKey_update);
+    }
+
+    @Bean
+    public Binding bindingRemove(){
+        return BindingBuilder
+                .bind(removeQueue())
+                .to(exchangeDelete())
+                .with(routingKey_remove);
     }
 }
