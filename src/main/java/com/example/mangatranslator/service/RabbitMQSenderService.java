@@ -1,6 +1,10 @@
 package com.example.mangatranslator.service;
 
+import com.google.gson.JsonParser;
 import lombok.extern.slf4j.Slf4j;
+import org.json.JSONException;
+import com.google.gson.JsonObject;
+import org.json.JSONObject;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,8 +32,13 @@ public class RabbitMQSenderService {
     private String routingKey_remove;
 
     public void sendCreateMessage(String message) {
-        rabbitTemplate.convertAndSend(exchangeCreate,routingKeyCreate,message);
-        log.info(" [x] Sent to create queue: '" + message + "'");
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("message", message);
+
+        // Convert JSON object to string
+        String jsonMessage = jsonObject.toString();
+            rabbitTemplate.convertAndSend(exchangeCreate,routingKeyCreate,jsonMessage);
+            log.info(" [x] Sent to create queue: '" + message + "'");
     }
 
     public void sendUpdateMessage(String message) {

@@ -20,7 +20,7 @@ public class User {
     @JoinTable(
             name = "favorite",
             joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "manga_id")
+            inverseJoinColumns = @JoinColumn(name = "recipe_id")
     )
     private Set<Recipe> favoriteRecipes;
 
