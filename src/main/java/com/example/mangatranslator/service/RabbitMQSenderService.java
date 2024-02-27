@@ -31,6 +31,13 @@ public class RabbitMQSenderService {
     @Value("${routing-key.remove-recipe}")
     private String routingKey_remove;
 
+    //Registration
+    @Value("${exchange.reg-user}")
+    private String regExchange;
+    @Value("${routing-key.reg-user}")
+    private String routingKey_reg;
+
+
     public void sendCreateMessage(String message) {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("message", message);
@@ -60,5 +67,16 @@ public class RabbitMQSenderService {
         rabbitTemplate.convertAndSend(removeExchange,routingKey_remove,jsonMessage);
         log.info(" [x] Sent to create queue: '" + message + "'");
     }
+
+    public void sendRegInfoMessage(String message) {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("message", message);
+
+        // Convert JSON object to string
+        String jsonMessage = jsonObject.toString();
+        rabbitTemplate.convertAndSend(regExchange,routingKey_reg,jsonMessage);
+        log.info(" [x] Sent to create queue: '" + message + "'");
+    }
+
 
 }

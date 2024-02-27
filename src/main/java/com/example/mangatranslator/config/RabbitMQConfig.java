@@ -33,6 +33,14 @@ public class RabbitMQConfig {
     @Value("${routing-key.remove-recipe}")
     private String routingKey_remove;
 
+    //Registration
+    @Value("${queue.reg-user}")
+    private String regQueue;
+    @Value("${exchange.reg-user}")
+    private String regExchange;
+    @Value("${routing-key.reg-user}")
+    private String routingKey_reg;
+
     @Bean
     public Queue createQueue() {
         return new Queue(createQueue, false);
@@ -49,6 +57,11 @@ public class RabbitMQConfig {
     }
 
     @Bean
+    public Queue registrationQueue() {
+        return new Queue(regQueue, false);
+    }
+
+    @Bean
     public TopicExchange exchangeCreate(){
         return new TopicExchange(createExchange);
     }
@@ -61,6 +74,11 @@ public class RabbitMQConfig {
     @Bean
     public TopicExchange exchangeDelete(){
         return new TopicExchange(removeExchange);
+    }
+
+    @Bean
+    public TopicExchange exchangeRegistration(){
+        return new TopicExchange(regExchange);
     }
 
     @Bean
@@ -85,5 +103,13 @@ public class RabbitMQConfig {
                 .bind(removeQueue())
                 .to(exchangeDelete())
                 .with(routingKey_remove);
+    }
+
+    @Bean
+    public Binding bindingRegistration(){
+        return BindingBuilder
+                .bind(removeQueue())
+                .to(exchangeDelete())
+                .with(routingKey_reg);
     }
 }

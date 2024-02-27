@@ -29,7 +29,7 @@ public class UserService implements UserDetailsService {
 
         System.out.println("In the user details service");
 
-        return userRepository.findByEmail(username);
+        return (UserDetails) userRepository.findByEmail(username);
     }
 
 }

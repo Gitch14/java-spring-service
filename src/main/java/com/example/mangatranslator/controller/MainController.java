@@ -66,4 +66,10 @@ public class MainController {
         return "test";
     }
 
+    @GetMapping("/registration")
+    String reg() {
+        regService.registration(new User());
+        return "registration";
+    }
+
 }
