@@ -108,8 +108,8 @@ public class RabbitMQConfig {
     @Bean
     public Binding bindingRegistration(){
         return BindingBuilder
-                .bind(removeQueue())
-                .to(exchangeDelete())
+                .bind(registrationQueue())
+                .to(exchangeRegistration())
                 .with(routingKey_reg);
     }
 }

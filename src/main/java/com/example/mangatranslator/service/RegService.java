@@ -8,15 +8,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class RegService {
-    private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     @Autowired
     private RabbitMQSenderService rabbitMQSenderService;
 
 
 
-    public RegService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
+    public RegService(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -27,6 +25,6 @@ public class RegService {
         user.setPassword(passwordEncoder.encode("111"));
         user.setName("user");
 
-        rabbitMQSenderService.sendCreateMessage(user.toString());
+        rabbitMQSenderService.sendRegInfoMessage(user.toString());
     }
 }
