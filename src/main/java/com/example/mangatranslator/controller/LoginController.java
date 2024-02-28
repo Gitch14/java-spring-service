@@ -4,7 +4,10 @@ import com.example.mangatranslator.model.User;
 import com.example.mangatranslator.service.RegService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class LoginController {
@@ -18,8 +21,14 @@ public class LoginController {
 
     @GetMapping("/registration")
     String reg() {
-        regService.registration(new User());
+       // regService.registration(new User());
         return "registration";
+    }
+
+    @PostMapping("/register")
+    public String registerUser(@ModelAttribute User user) {
+        regService.registration(user);
+        return "redirect:/login";
     }
 
 

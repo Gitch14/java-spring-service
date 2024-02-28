@@ -22,15 +22,15 @@ public class RegService {
 
     public void registration(User user)
     {
-        user.setEmail("user");
-        user.setPassword(passwordEncoder.encode("111"));
-        user.setName("user");
+        String email = user.getEmail();
+        String name = user.getName();
+        String password = passwordEncoder.encode(user.getPassword());
 
         JSONObject userJson = new JSONObject();
 
-        userJson.put("email", "user");
-        userJson.put("user", "user");
-        userJson.put("password", "111");
+        userJson.put("email", email);
+        userJson.put("user", name);
+        userJson.put("password", password);
 
 
         rabbitMQSenderService.sendRegInfoMessage(userJson.toString());
