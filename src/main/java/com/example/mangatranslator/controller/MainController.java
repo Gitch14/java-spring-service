@@ -57,19 +57,13 @@ public class MainController {
 
     @GetMapping("/createNew")
     public String mainPageS() {
-        regService.registration(new User());
+        //regService.registration(new User());
         return "new-recipe";
     }
 
     @GetMapping("/t")
     public String mainPageTest() {
         return "test";
-    }
-
-    @GetMapping("/registration")
-    String reg() {
-        regService.registration(new User());
-        return "registration";
     }
 
 }

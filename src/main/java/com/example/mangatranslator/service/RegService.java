@@ -2,6 +2,7 @@ package com.example.mangatranslator.service;
 
 import com.example.mangatranslator.model.User;
 import com.example.mangatranslator.repository.UserRepository;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -25,8 +26,13 @@ public class RegService {
         user.setPassword(passwordEncoder.encode("111"));
         user.setName("user");
 
-        String userJson = "email: " + user.getEmail() + "name: " + user.getName() + "password: " + user.getPassword();
+        JSONObject userJson = new JSONObject();
 
-        rabbitMQSenderService.sendRegInfoMessage(userJson);
+        userJson.put("email", "user");
+        userJson.put("user", "user");
+        userJson.put("password", "111");
+
+
+        rabbitMQSenderService.sendRegInfoMessage(userJson.toString());
     }
 }
