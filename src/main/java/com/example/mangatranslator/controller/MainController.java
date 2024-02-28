@@ -33,7 +33,7 @@ public class MainController {
     }
 
 
-
+/*
     @GetMapping("/")
     public List<User1> mainPage() {
         List<User1> list = repository.findAll();
@@ -42,6 +42,8 @@ public class MainController {
         rabbitMQSenderService.sendRemoveMessage("remove");
         return list;
     }
+
+ */
 
     @PostMapping("/create")
     public ResponseEntity<User> registerUser() {

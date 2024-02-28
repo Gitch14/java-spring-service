@@ -1,6 +1,7 @@
 package com.example.mangatranslator.controller;
 
 import com.example.mangatranslator.model.User;
+import com.example.mangatranslator.model.User1;
 import com.example.mangatranslator.service.RegService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +10,26 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 @Slf4j
 public class LoginController {
 
     @Autowired
     private RegService regService;
+
+    @GetMapping("/")
+    public String mainPage() {
+        /*
+        List<User1> list = repository.findAll();
+        rabbitMQSenderService.sendCreateMessage("create");
+        rabbitMQSenderService.sendUpdateMessage("update");
+        rabbitMQSenderService.sendRemoveMessage("remove");
+        return list;
+         */
+        return "index";
+    }
     @GetMapping("/login")
     String login() {
         return "login";
