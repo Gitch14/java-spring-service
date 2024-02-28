@@ -1,31 +1,20 @@
 package com.example.mangatranslator.controller;
 
-import com.example.mangatranslator.model.User;
-import com.example.mangatranslator.model.User1;
-import com.example.mangatranslator.repository.User1Repository;
 import com.example.mangatranslator.repository.UserRepository;
-import com.example.mangatranslator.service.RabbitMQSenderService;
-import com.example.mangatranslator.service.RegService;
+import com.example.mangatranslator.service.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 public class MainController {
 
-    @Autowired
-    private RabbitMQSenderService rabbitMQSenderService;
-    @Autowired
-    private User1Repository repository;
+    //@Autowired
+   // private RabbitMQSenderService rabbitMQSenderService;
     @Autowired
     private UserRepository repositoryAcc;
     @Autowired
-    private RegService regService;
+    private RegistrationService registrationService;
     private final PasswordEncoder passwordEncoder;
 
     public MainController(PasswordEncoder passwordEncoder) {
@@ -43,7 +32,7 @@ public class MainController {
         return list;
     }
 
- */
+
 
     @PostMapping("/create")
     public ResponseEntity<User> registerUser() {
@@ -55,17 +44,5 @@ public class MainController {
         repositoryAcc.save(user);
         return ResponseEntity.ok(user);
     }
-
-
-    @GetMapping("/createNew")
-    public String mainPageS() {
-        //regService.registration(new User());
-        return "new-recipe";
-    }
-
-    @GetMapping("/t")
-    public String mainPageTest() {
-        return "test";
-    }
-
+     */
 }

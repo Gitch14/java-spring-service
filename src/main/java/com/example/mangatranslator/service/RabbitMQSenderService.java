@@ -47,8 +47,8 @@ public class RabbitMQSenderService {
 
         // Convert JSON object to string
         String jsonMessage = jsonObject.toString();
-            rabbitTemplate.convertAndSend(exchangeCreate,routingKeyCreate,jsonMessage);
-            log.info(" [x] Sent to create queue: '" + message + "'");
+        rabbitTemplate.convertAndSend(exchangeCreate, routingKeyCreate, jsonMessage);
+        log.info(" [x] Sent to create queue: '" + message + "'");
     }
 
     public void sendUpdateMessage(String message) {
@@ -57,7 +57,7 @@ public class RabbitMQSenderService {
 
         // Convert JSON object to string
         String jsonMessage = jsonObject.toString();
-        rabbitTemplate.convertAndSend(updateExchange,routingKey_update,jsonMessage);
+        rabbitTemplate.convertAndSend(updateExchange, routingKey_update, jsonMessage);
         log.info(" [x] Sent to create queue: '" + message + "'");
     }
 
@@ -67,12 +67,12 @@ public class RabbitMQSenderService {
 
         // Convert JSON object to string
         String jsonMessage = jsonObject.toString();
-        rabbitTemplate.convertAndSend(removeExchange,routingKey_remove,jsonMessage);
+        rabbitTemplate.convertAndSend(removeExchange, routingKey_remove, jsonMessage);
         log.info(" [x] Sent to create queue: '" + message + "'");
     }
 
     public void sendRegInfoMessage(User user) {
-        rabbitTemplate.convertAndSend(regExchange,routingKey_reg,user);
+        rabbitTemplate.convertAndSend(regExchange, routingKey_reg, user);
         log.info(" [x] Sent to registration queue: '" + user + "'");
     }
 

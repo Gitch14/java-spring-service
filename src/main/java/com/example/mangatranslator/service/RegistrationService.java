@@ -1,25 +1,23 @@
 package com.example.mangatranslator.service;
 
 import com.example.mangatranslator.model.User;
-import com.example.mangatranslator.repository.UserRepository;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RegService {
+public class RegistrationService {
     private final PasswordEncoder passwordEncoder;
     @Autowired
     private RabbitMQSenderService rabbitMQSenderService;
 
-    public RegService(PasswordEncoder passwordEncoder) {
+    public RegistrationService(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
     }
 
 
-    public void registration(User user)
-    {
+    public void registration(User user) {
         String email = user.getEmail();
         String name = user.getName();
         String password = passwordEncoder.encode(user.getPassword());

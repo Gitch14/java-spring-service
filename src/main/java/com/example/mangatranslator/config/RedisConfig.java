@@ -24,7 +24,7 @@ import java.io.Serializable;
 //@EnableCaching
 public class RedisConfig {
 
-   // @Autowired
+    // @Autowired
     private CacheManager cacheManager;
 
     @Value("${spring.redis.host}")

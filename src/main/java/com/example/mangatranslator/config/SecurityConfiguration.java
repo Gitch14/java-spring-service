@@ -8,6 +8,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
+
+import static com.example.mangatranslator.util.SecurityConst.*;
 
 @Configuration
 public class SecurityConfiguration {
@@ -32,18 +35,23 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        HttpSessionRequestCache requestCache = new HttpSessionRequestCache();
+        requestCache.setMatchingRequestParameterName("continue");
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers("/createNew","/create/**","/registration/**","/register/**", "/static/**","/").permitAll();
+                    auth.requestMatchers(WHITE_LIST_URL).permitAll();
                     auth.anyRequest().authenticated();
                 })
                 .formLogin(form -> form
-                        .loginPage("/login")
-                        .usernameParameter("email")
-                        .passwordParameter("password")
-                        .permitAll()
-                );
+                        .loginPage(LOGIN)
+                        .usernameParameter(EMAIL_LOGIN)
+                        .passwordParameter(PASSWORD_LOGIN)
+                        .defaultSuccessUrl(HOME_PAGE)
+                        .permitAll());
+        http .requestCache((cache) -> cache
+                .requestCache(requestCache)
+        );
         return http.build();
     }
 }

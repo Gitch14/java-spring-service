@@ -23,10 +23,11 @@ public class S3BucketStorage {
 
     @Autowired
     private AmazonS3 s3Client;
+
     public String uploadFile(MultipartFile file) {
         File fileObj = convertMultiPartFileToFile(file);
-        String filename= file.getOriginalFilename();
-        s3Client.putObject(new PutObjectRequest(bucketName,filename,fileObj));
+        String filename = file.getOriginalFilename();
+        s3Client.putObject(new PutObjectRequest(bucketName, filename, fileObj));
         fileObj.delete();
         return "File uploaded : " + filename;
     }

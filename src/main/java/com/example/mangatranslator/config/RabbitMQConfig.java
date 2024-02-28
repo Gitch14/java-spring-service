@@ -66,27 +66,27 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    public TopicExchange exchangeCreate(){
+    public TopicExchange exchangeCreate() {
         return new TopicExchange(createExchange);
     }
 
     @Bean
-    public TopicExchange exchangeUpdate(){
+    public TopicExchange exchangeUpdate() {
         return new TopicExchange(updateExchange);
     }
 
     @Bean
-    public TopicExchange exchangeDelete(){
+    public TopicExchange exchangeDelete() {
         return new TopicExchange(removeExchange);
     }
 
     @Bean
-    public TopicExchange exchangeRegistration(){
+    public TopicExchange exchangeRegistration() {
         return new TopicExchange(regExchange);
     }
 
     @Bean
-    public Binding bindingCreate(){
+    public Binding bindingCreate() {
         return BindingBuilder
                 .bind(createQueue())
                 .to(exchangeCreate())
@@ -94,7 +94,7 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    public Binding bindingUpdate(){
+    public Binding bindingUpdate() {
         return BindingBuilder
                 .bind(updateQueue())
                 .to(exchangeUpdate())
@@ -102,7 +102,7 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    public Binding bindingRemove(){
+    public Binding bindingRemove() {
         return BindingBuilder
                 .bind(removeQueue())
                 .to(exchangeDelete())
@@ -110,7 +110,7 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    public Binding bindingRegistration(){
+    public Binding bindingRegistration() {
         return BindingBuilder
                 .bind(registrationQueue())
                 .to(exchangeRegistration())
@@ -118,12 +118,12 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    public MessageConverter converter(){
+    public MessageConverter converter() {
         return new Jackson2JsonMessageConverter();
     }
 
     @Bean
-    public AmqpTemplate amqpTemplate(ConnectionFactory connectionFactory){
+    public AmqpTemplate amqpTemplate(ConnectionFactory connectionFactory) {
         RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
         rabbitTemplate.setMessageConverter(converter());
         return rabbitTemplate;

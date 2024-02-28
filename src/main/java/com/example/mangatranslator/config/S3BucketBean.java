@@ -20,7 +20,7 @@ public class S3BucketBean {
     private String s3Region;
 
     @Bean
-    AmazonS3 generates3client(){
+    AmazonS3 generates3client() {
         AWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
         return AmazonS3ClientBuilder.standard()
                 .withCredentials(new AWSStaticCredentialsProvider(credentials)).withRegion(s3Region).build();
