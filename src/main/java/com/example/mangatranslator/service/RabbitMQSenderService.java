@@ -2,7 +2,6 @@ package com.example.mangatranslator.service;
 
 import com.google.gson.JsonObject;
 import lombok.extern.slf4j.Slf4j;
-import org.json.JSONObject;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -66,8 +65,13 @@ public class RabbitMQSenderService {
         log.info(" [x] Sent to create queue: '" + message + "'");
     }
 
-    public void sendRegInfoMessage(JSONObject message) {
-        rabbitTemplate.convertAndSend(regExchange,routingKey_reg,message);
+    public void sendRegInfoMessage(String message) {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("message", message);
+
+        // Convert JSON object to string
+        String jsonMessage = jsonObject.toString();
+        rabbitTemplate.convertAndSend(regExchange,routingKey_reg,jsonMessage);
         log.info(" [x] Sent to create queue: '" + message + "'");
     }
 

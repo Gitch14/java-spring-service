@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class LoginController {
@@ -21,15 +22,32 @@ public class LoginController {
 
     @GetMapping("/registration")
     String reg() {
-       // regService.registration(new User());
+        regService.registration1();
         return "registration";
     }
 
+    @PostMapping("/register")
+    public String registerUser(@RequestParam("email") String email,
+                               @RequestParam("name") String name,
+                               @RequestParam("password") String password) {
+        User user = new User();
+        user.setEmail(email);
+        user.setName(name);
+        user.setPassword(password);
+
+        regService.registration(user);
+
+        return "redirect:/login";
+    }
+
+    /*
     @PostMapping("/register")
     public String registerUser(@ModelAttribute User user) {
         regService.registration(user);
         return "redirect:/login";
     }
+
+     */
 
 
 
