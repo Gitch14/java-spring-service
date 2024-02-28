@@ -2,15 +2,15 @@ package com.example.mangatranslator.controller;
 
 import com.example.mangatranslator.model.User;
 import com.example.mangatranslator.service.RegService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@Slf4j
 public class LoginController {
 
     @Autowired
@@ -22,7 +22,6 @@ public class LoginController {
 
     @GetMapping("/registration")
     String reg() {
-        regService.registration1();
         return "registration";
     }
 
@@ -34,11 +33,13 @@ public class LoginController {
         user.setEmail(email);
         user.setName(name);
         user.setPassword(password);
+        log.info("Email: " + user.getEmail() + "\n" + "Name: " + user.getName() + "\n" + "Password: " + user.getPassword());
 
         regService.registration(user);
 
         return "redirect:/login";
     }
+
 
     /*
     @PostMapping("/register")

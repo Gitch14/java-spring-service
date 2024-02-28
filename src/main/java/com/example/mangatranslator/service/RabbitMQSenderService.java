@@ -72,7 +72,7 @@ public class RabbitMQSenderService {
         // Convert JSON object to string
         String jsonMessage = jsonObject.toString();
         rabbitTemplate.convertAndSend(regExchange,routingKey_reg,jsonMessage);
-        log.info(" [x] Sent to create queue: '" + message + "'");
+        log.info(" [x] Sent to registration queue: '" + message + "'");
     }
 
 
