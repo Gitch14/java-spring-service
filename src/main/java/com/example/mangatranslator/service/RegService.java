@@ -25,6 +25,8 @@ public class RegService {
         user.setPassword(passwordEncoder.encode("111"));
         user.setName("user");
 
-        rabbitMQSenderService.sendRegInfoMessage(user.toString());
+        String userJson = user.getEmail() + "," + user.getName() + "," + user.getPassword();
+
+        rabbitMQSenderService.sendRegInfoMessage(userJson);
     }
 }
