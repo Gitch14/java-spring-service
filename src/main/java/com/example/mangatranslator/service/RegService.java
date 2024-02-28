@@ -33,6 +33,6 @@ public class RegService {
         userJson.put("password", password);
 
 
-        rabbitMQSenderService.sendRegInfoMessage(userJson.toString());
+        rabbitMQSenderService.sendRegInfoMessage(userJson);
     }
 }
