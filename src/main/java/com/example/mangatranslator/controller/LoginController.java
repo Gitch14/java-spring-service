@@ -52,6 +52,7 @@ public class LoginController {
 
         regService.registration(user);
 
+
         return "redirect:/login";
     }
 

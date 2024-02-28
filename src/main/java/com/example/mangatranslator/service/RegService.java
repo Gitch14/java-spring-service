@@ -1,6 +1,7 @@
 package com.example.mangatranslator.service;
 
 import com.example.mangatranslator.model.User;
+import com.example.mangatranslator.repository.UserRepository;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -11,8 +12,6 @@ public class RegService {
     private final PasswordEncoder passwordEncoder;
     @Autowired
     private RabbitMQSenderService rabbitMQSenderService;
-
-
 
     public RegService(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
@@ -35,8 +34,6 @@ public class RegService {
         user.setEmail(email);
         user.setName(name);
         user.setPassword(password);
-
-
 
         rabbitMQSenderService.sendRegInfoMessage(user);
     }
