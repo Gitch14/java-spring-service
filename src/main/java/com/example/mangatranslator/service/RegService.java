@@ -38,6 +38,6 @@ public class RegService {
 
 
 
-        rabbitMQSenderService.sendRegInfoMessage(userJson.toString());
+        rabbitMQSenderService.sendRegInfoMessage(user);
     }
 }
