@@ -31,16 +31,11 @@ public class RecipeController {
     }
 
     @GetMapping(CREATE_RECIPE_PAGE)
-    String recipeCreatePage() throws IOException {
+    String recipeCreatePage() {
         recipeService.createRecipe();
         return "redirect:/";
-      
-      
-    @GetMapping(CREATE_RECIPE_PAGE)
-    String recipeCreatePage() {
-
-        return "recipe-create";
     }
+
 
     @PostMapping(CREATE_RECIPE)
     public String createRecipe(Recipe recipe) {
