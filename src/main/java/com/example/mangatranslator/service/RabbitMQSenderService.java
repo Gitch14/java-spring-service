@@ -1,5 +1,6 @@
 package com.example.mangatranslator.service;
 
+import com.example.mangatranslator.model.Recipe;
 import com.example.mangatranslator.model.User;
 import com.google.gson.JsonObject;
 import lombok.extern.slf4j.Slf4j;
@@ -41,14 +42,9 @@ public class RabbitMQSenderService {
     private String routingKey_reg;
 
 
-    public void sendCreateMessage(String message) {
-        JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("message", message);
-
-        // Convert JSON object to string
-        String jsonMessage = jsonObject.toString();
-        rabbitTemplate.convertAndSend(exchangeCreate, routingKeyCreate, jsonMessage);
-        log.info(" [x] Sent to create queue: '" + message + "'");
+    public void sendCreateMessage(Recipe recipe) {
+        rabbitTemplate.convertAndSend(exchangeCreate, routingKeyCreate, recipe);
+        log.info(" [x] Sent to create queue: '" + recipe + "'");
     }
 
     public void sendUpdateMessage(String message) {
