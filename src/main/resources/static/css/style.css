@@ -1,9 +1,8 @@
-
+/* @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"); */
 /* Header */
 /* .navbar{
 
 } */
-
 a.user-aut, a.user-saves{
     color: #000;
     text-decoration: none;
@@ -14,7 +13,7 @@ a.user-aut, a.user-saves{
 .logo-test{
     display: flex;
     justify-content: center;
-    margin: 0 0 0 30px;
+    /* margin: 0 0 0 30px; */
     width: 50px;
     height: 50px;
     -webkit-border-radius: 25px;
@@ -24,7 +23,7 @@ a.user-aut, a.user-saves{
     text-decoration: none;
 }
 
-.logo_text{
+.logo-text{
     font-size: 24px;
     display: flex;
     color: #000;
@@ -32,22 +31,74 @@ a.user-aut, a.user-saves{
     justify-content: center;
     font-weight: bold;
 }
-/*  */
+/* nav elements */
 
 li.nav-item-user{
     list-style: none;
     padding-left: 0;
 }
 
-ul li.nav-item {
-    text-align: center;
-    width: 150px;
+/* ul li.nav-item {
+    margin-left: 10px;
+} */
+
+.test-btn{
+    font-size: 25px;
+    height: 50px;
+    width: 50px;
+    background-color: #c6c6c6;
+    color: #000;
+}
+
+.search-test{
+    align-items: center;
+}
+
+.test-dropdown{
+    display: flex;
+    align-items: center;
+}
+
+.test-icon-saves{
+    align-items: center;
+    color: #000;
+    font-size: 25px;
 }
 
 .nav-bar-user{
     display: flex;
     align-items: center;
     margin: 0;
+}
+
+.user-nav{
+    position: relative;
+    left: 80px;
+}
+
+.but{
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 0 50px;
+}
+
+@media(max-width: 991px){
+    .but{
+        position: relative !important;
+        top: 30px;
+        padding: 0 !important;
+    }
+
+    .user-nav{
+        left: 0 !important;
+    }
+
+    .search-test{
+        position: relative !important;
+        bottom: 130px;
+    }
+
+
 }
 
 a.user-aut, a.user-saves{
@@ -193,13 +244,38 @@ a.user-aut, a.user-saves{
 .most-rated-sec{
     height: 500px;
     background: #D9D9D9;
-
 }
 
 .title-most-rated{
     font-size: 24px;
     font-weight: bold;
     text-transform: uppercase;
+}
+
+/* Favorite categorys(buttons)*/
+a.test-but{
+    color: #000;
+    text-decoration: none;
+}
+
+.fav-but1:hover{
+    transition: background-color 0.5s;
+    background-color: #b1b8fa;
+}
+
+.fav-but{
+    margin: 20px 0;
+    height: 150px;
+    background: #D9D9D9;
+}
+
+.fav-but1, .fav-but2, .fav-but3, .fav-but4
+, .fav-but5, .fav-but6, .fav-but7, .fav-but8{
+    border-color: #000;
+    border-style: solid;
+    border-radius: 15px;
+    background-color: #fff;
+    transition: background-color 0.5s;
 }
 
 

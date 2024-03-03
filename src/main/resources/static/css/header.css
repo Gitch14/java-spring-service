@@ -3,11 +3,12 @@ a.user-aut, a.user-saves{
     text-decoration: none;
 }
 
+
 /* logo */
 .logo-test{
     display: flex;
     justify-content: center;
-    margin: 0 0 0 30px;
+    /* margin: 0 0 0 30px; */
     width: 50px;
     height: 50px;
     -webkit-border-radius: 25px;
@@ -17,7 +18,7 @@ a.user-aut, a.user-saves{
     text-decoration: none;
 }
 
-.logo_text{
+.logo-text{
     font-size: 24px;
     display: flex;
     color: #000;
@@ -25,16 +26,38 @@ a.user-aut, a.user-saves{
     justify-content: center;
     font-weight: bold;
 }
-/*  */
+/* nav elements */
 
 li.nav-item-user{
     list-style: none;
     padding-left: 0;
 }
 
-ul li.nav-item {
-    text-align: center;
-    width: 150px;
+/* ul li.nav-item {
+    margin-left: 10px;
+} */
+
+.test-btn{
+    font-size: 25px;
+    height: 50px;
+    width: 50px;
+    background-color: #c6c6c6;
+    color: #000;
+}
+
+.search-test{
+    align-items: center;
+}
+
+.test-dropdown{
+    display: flex;
+    align-items: center;
+}
+
+.test-icon-saves{
+    align-items: center;
+    color: #000;
+    font-size: 25px;
 }
 
 .nav-bar-user{
@@ -43,6 +66,37 @@ ul li.nav-item {
     margin: 0;
 }
 
+.user-nav{
+    position: relative;
+    left: 80px;
+}
+
+.but{
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 0 50px;
+}
+
+
 a.user-aut, a.user-saves{
     padding: 8px;
+}
+
+@media(max-width: 991px){
+    .but{
+        position: relative !important;
+        top: 30px;
+        padding: 0 !important;
+    }
+
+    .user-nav{
+        left: 0 !important;
+    }
+
+    .search-test{
+        position: relative !important;
+        bottom: 130px;
+    }
+
+
 }
