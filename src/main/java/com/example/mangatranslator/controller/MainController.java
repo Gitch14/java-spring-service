@@ -1,48 +1,24 @@
 package com.example.mangatranslator.controller;
 
-import com.example.mangatranslator.repository.UserRepository;
-import com.example.mangatranslator.service.RegistrationService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
-@RestController
+import static com.example.mangatranslator.util.Const.*;
+
+@Controller
 public class MainController {
-
-    //@Autowired
-   // private RabbitMQSenderService rabbitMQSenderService;
-    @Autowired
-    private UserRepository repositoryAcc;
-    @Autowired
-    private RegistrationService registrationService;
-    private final PasswordEncoder passwordEncoder;
-
-    public MainController(PasswordEncoder passwordEncoder) {
-        this.passwordEncoder = passwordEncoder;
+    @GetMapping(ABOUT_US)
+    String about() {
+        return "about";
     }
 
-
-/*
-    @GetMapping("/")
-    public List<User1> mainPage() {
-        List<User1> list = repository.findAll();
-        rabbitMQSenderService.sendCreateMessage("create");
-        rabbitMQSenderService.sendUpdateMessage("update");
-        rabbitMQSenderService.sendRemoveMessage("remove");
-        return list;
+    @GetMapping(PRIVACY)
+    String privacy() {
+        return "privacy";
     }
 
-
-
-    @PostMapping("/create")
-    public ResponseEntity<User> registerUser() {
-        User user = new User();
-        user.setName("user");
-        user.setPassword(passwordEncoder.encode("111"));
-        user.setEmail("user");
-
-        repositoryAcc.save(user);
-        return ResponseEntity.ok(user);
+    @GetMapping(FAQ)
+    String faq() {
+        return "faq";
     }
-     */
 }

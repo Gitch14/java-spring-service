@@ -7,11 +7,11 @@ public class Const {
     public static final String REGISTRATION_PAGE = "/registration";
     public static final String LOGIN_PAGE = "/login";
     public static final String HOME_PAGE = "/";
-
     public static final String CATALOG_PAGE = "/catalog";
-
     public static final String RECIPE_PAGE = "/recipe/{id}";
-
+    public static final String FAQ = "/faq";
+    public static final String ABOUT_US = "/about";
+    public static final String PRIVACY = "/privacy";
     //POST mapping
     public static final String CREATE_USER = "/register";
     public static final String CREATE_RECIPE = "/recipe/create";
