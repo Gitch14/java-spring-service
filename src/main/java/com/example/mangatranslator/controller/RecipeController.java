@@ -31,7 +31,7 @@ public class RecipeController {
     }
 
     @GetMapping(CREATE_RECIPE_PAGE)
-    String recipeCreatePage() {
+    String recipeCreatePage() throws IOException {
         recipeService.createRecipe();
         return "redirect:/";
     }
