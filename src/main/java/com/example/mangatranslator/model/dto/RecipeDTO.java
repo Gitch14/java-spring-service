@@ -9,7 +9,7 @@ public class RecipeDTO {
     private String title;
     private String description;
     private String type;
-    private String userId;
+    private Long userId;
     private MediaDTO image;
     private MediaDTO video;
     private String optional;
