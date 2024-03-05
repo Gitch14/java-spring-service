@@ -23,19 +23,7 @@ public class MediaUtils {
         MediaDTO mediaDTO = new MediaDTO();
         String fileType = detectFileType(base64File);
 
-        if (fileType != null) {
-            if (fileType.startsWith("image")) {
-                mediaDTO.setFormat("png");
-                System.out.println("png");
-            } else if (fileType.startsWith("video")) {
-                mediaDTO.setFormat("mp4");
-                System.out.println("mp4");
-            } else {
-                System.out.println("File is of unknown type");
-            }
-        } else {
-            System.out.println("Could not determine file type");
-        }
+       mediaDTO.setFormat("png");
 
         String file = base64File;
 
@@ -43,7 +31,7 @@ public class MediaUtils {
         String[] parts = file.split("base64,");
         String base64Data = parts[1];
         //String format = parts[0];
-        mediaDTO.setType("png");
+        mediaDTO.setType("image");
 
         mediaDTO.setData(base64Data);
         return mediaDTO;
