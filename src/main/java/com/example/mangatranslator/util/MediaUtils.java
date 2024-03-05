@@ -37,14 +37,15 @@ public class MediaUtils {
             System.out.println("Could not determine file type");
         }
 
-        String file = fileBase64(base64File);
+        String file = base64File;
 
 
-        //String[] parts = file.split("base64,");
-        //String base64Data = parts[1];
-        //  String format = parts[0];
+        String[] parts = file.split("base64,");
+        String base64Data = parts[1];
+        //String format = parts[0];
+        mediaDTO.setType("png");
 
-        mediaDTO.setData(base64File);
+        mediaDTO.setData(base64Data);
         return mediaDTO;
     }
 }
