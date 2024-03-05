@@ -7,27 +7,43 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Base64;
 
+import static com.example.mangatranslator.util.FileConverter.fileBase64;
+
 public class MediaUtils {
 
-    public static MediaDTO encodeImageToBase64(String base64Image) {
+    public static String detectFileType(String filePath) throws IOException {
+        File file = new File(filePath);
+        String mimeType = Files.probeContentType(file.toPath());
+        return mimeType;
+    }
+
+
+    public static MediaDTO encodeImageToBase64(String base64File) throws IOException {
         MediaDTO mediaDTO = new MediaDTO();
+        String fileType = detectFileType(base64File);
 
-        String[] parts = base64Image.split("base64,");
-        String base64Data = parts[1];
-        String format = parts[0];
-
-        if (format.contains("png") || format.contains("jpg") || format.contains("image")) {
-            mediaDTO.setType("image");
-            if (format.contains("png")) {
+        if (fileType != null) {
+            if (fileType.startsWith("image")) {
                 mediaDTO.setFormat("png");
-            } else if (format.contains("jpg")) {
-                mediaDTO.setFormat("jpg");
+                System.out.println("png");
+            } else if (fileType.startsWith("video")) {
+                mediaDTO.setFormat("mp4");
+                System.out.println("mp4");
             } else {
-                mediaDTO.setFormat("unknown");
+                System.out.println("File is of unknown type");
             }
+        } else {
+            System.out.println("Could not determine file type");
         }
 
-        mediaDTO.setData(base64Data);
+        String file = fileBase64(base64File);
+
+
+        //String[] parts = file.split("base64,");
+        //String base64Data = parts[1];
+      //  String format = parts[0];
+
+        mediaDTO.setData(base64File);
 
         return mediaDTO;
     }
