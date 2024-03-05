@@ -2,6 +2,7 @@ package com.example.mangatranslator.service;
 
 import com.example.mangatranslator.model.Recipe;
 import com.example.mangatranslator.model.User;
+import com.example.mangatranslator.model.dto.RecipeDTO;
 import com.google.gson.JsonObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.AmqpTemplate;
@@ -42,7 +43,7 @@ public class RabbitMQSenderService {
     private String routingKey_reg;
 
 
-    public void sendCreateMessage(Recipe recipe) {
+    public void sendCreateMessage(RecipeDTO recipe) {
         rabbitTemplate.convertAndSend(exchangeCreate, routingKeyCreate, recipe);
         log.info(" [x] Sent to create queue: '" + recipe + "'");
     }
