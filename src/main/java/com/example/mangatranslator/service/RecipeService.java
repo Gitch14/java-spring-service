@@ -41,6 +41,9 @@ public class RecipeService {
         // Создание DTO для рецепта
         RecipeDTO recipeDTO = createRecipeDTO();
         recipeDTO.setUserId("1");
+// Создание DTO для рецепта
+        RecipeDTO recipeDTO = createRecipeDTO();
+
 
         // Создание DTO для шага рецепта
         RecipeStepDTO recipeStepDTO = new RecipeStepDTO();
