@@ -1,18 +1,15 @@
 package com.example.mangatranslator.service;
 
-import com.example.mangatranslator.model.Difficulty;
-import com.example.mangatranslator.model.Ingredient;
 import com.example.mangatranslator.model.Recipe;
-import com.example.mangatranslator.model.RecipeStep;
 import com.example.mangatranslator.model.dto.IngredientDTO;
 import com.example.mangatranslator.model.dto.RecipeDTO;
 import com.example.mangatranslator.model.dto.RecipeStepDTO;
 import com.example.mangatranslator.repository.RecipeRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.joda.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +38,7 @@ public class RecipeService {
         // Создание DTO для рецепта
         RecipeDTO recipeDTO = createRecipeDTO();
         recipeDTO.setUserId(1L);
+        recipeDTO.setDataPublish(LocalDateTime.now());
 
 
         // Создание DTO для шага рецепта

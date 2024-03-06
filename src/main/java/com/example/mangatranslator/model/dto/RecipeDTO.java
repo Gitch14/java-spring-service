@@ -2,6 +2,8 @@ package com.example.mangatranslator.model.dto;
 
 import lombok.Data;
 
+import org.joda.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -17,6 +19,7 @@ public class RecipeDTO {
     private String timeToCook;
     private String timeToPreparing;
     private String difficulty;
+    private LocalDateTime dataPublish;
     private List<RecipeStepDTO> steps;
     private List<IngredientDTO> ingredients;
 }
