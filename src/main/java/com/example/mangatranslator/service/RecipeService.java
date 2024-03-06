@@ -39,7 +39,7 @@ public class RecipeService {
         RecipeDTO recipeDTO = createRecipeDTO();
         recipeDTO.setUserId(1L);
         String timeNow = LocalDateTime.now().toString();
-        recipeDTO.setDataPublish(timeNow);
+        recipeDTO.setDatePublish(timeNow);
 
 
         // Создание DTO для шага рецепта

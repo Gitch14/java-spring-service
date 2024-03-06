@@ -19,7 +19,7 @@ public class RecipeDTO {
     private String timeToCook;
     private String timeToPreparing;
     private String difficulty;
-    private String dataPublish;
+    private String datePublish;
     private List<RecipeStepDTO> steps;
     private List<IngredientDTO> ingredients;
 }
